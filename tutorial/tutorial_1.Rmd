@@ -1,0 +1,54 @@
+---
+title: "Tutorial: Testing Bfast Spatial"
+author: "Sabina Rosca"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[Introduction placeholder]
+
+### Installation of required R packages
+
+```{r}
+install.packages("devtools", repos="http://cran.rstudio.com/")
+library(devtools)
+install.packages("stringr", repos="http://cran.rstudio.com/")
+library(stringr)
+install_github("loicdtx/bfastSpatial")
+library(bfastSpatial)
+```
+
+## Loading the input data for analysis
+
+[Explanation of how to do the pre-proccessing of the data with link to Loic's tutorial]
+
+```{r}
+ndmiStack <- brick("~/data/Peru_ndmi_stack.grd")
+ndviStack <- brick()
+```
+
+## Testing the bfmSpatial function
+
+First, create the directory to store the results
+
+```{r}
+if (!dir.exists("~/data/Bfast_results")){
+  dir.create("~/data/Bfast_results")
+}
+```
+
+Example 1:
+
+[Description of parameters to be used in ex1]
+
+```{r}
+out1 <- file.path("~/data/Bfast_results/example_1_1cpu.grd")
+time_example_1 <- system.time(bfmSpatial(ndmiStack, start=c(2010,1), 
+                                   formula=response~harmon, order=1, history="all",filename=out1))
+
+paste("Total running time is",time_example_1)
+#bfm_ex1 <- brick(out1)
+```
