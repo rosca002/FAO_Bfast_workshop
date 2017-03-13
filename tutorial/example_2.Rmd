@@ -7,13 +7,17 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 source("~/wur_bfast_workshop/R-scripts/tutorial_0.R")
+source("~/wur_bfast_workshop/R-scripts/accuracy_assessment.R")
 ```
 
 ## Example 2
 
 ```{r, eval=FALSE}
 source("~/wur_bfast_workshop/R-scripts/tutorial_0.R")
+source("~/wur_bfast_workshop/R-scripts/accuracy_assessment.R")
 example_title <- 2
+results_directory <- file.path(results_directory,paste0("example_",example_title))
+dir.create(results_directory)
 log_filename <- file.path(results_directory, paste0(format(Sys.time(), "%Y-%m-%d-%H-%M-%S"), "_example_", example_title, ".log"))
 start_time <- format(Sys.time(), "%Y/%m/%d %H:%M:%S")
 
@@ -67,4 +71,21 @@ years <- c(2010,2011,2012,2013,2014,2015,2016,2017)
 plot(def_years, col=rainbow(length(years)),breaks=years, main="Detecting deforestation after 2010")
 writeRaster(def_ndmi,filename = file.path(results_directory,paste0("example_",example_title,"_deforestation_dates.grd")),overwrite=TRUE)
 
+```
+
+## Accuracy Asessment
+
+```{r}
+Forest_mask <- raster(file.path(workshop_folder,"data/Fmask_2010_Peru.tif"))
+validation_forest_map <- raster(file.path(workshop_folder,"data/Validation_forest_2016.tif"))
+```
+
+The accuracy assessment is done following the paper of Olofsson et al. (2014) "Good practices for estimating area and assessing accuracy of land change".
+
+```{r warning=FALSE}
+sample_size <- calcSampleSize(def_years,Forest_mask,c(0.9,0.7),0.01)
+samples <- extractRandomSamples(def_years,Forest_mask,sample_size,results_directory,"samples")
+val_sample <- extractValidationValues(validation_forest_map, samples, Forest_mask)
+conf_matrix <- assessAcuracy(samples,val_sample)
+conf_matrix
 ```

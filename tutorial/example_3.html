@@ -125,7 +125,10 @@ $(document).ready(function () {
 <div id="example-3" class="section level2">
 <h2>Example 3</h2>
 <pre class="r"><code>source(&quot;~/wur_bfast_workshop/R-scripts/tutorial_0.R&quot;)
+source(&quot;~/wur_bfast_workshop/R-scripts/accuracy_assessment.R&quot;)
 example_title &lt;- 3
+results_directory &lt;- file.path(results_directory,paste0(&quot;example_&quot;,example_title))
+dir.create(results_directory)
 log_filename &lt;- file.path(results_directory, paste0(format(Sys.time(), &quot;%Y-%m-%d-%H-%M-%S&quot;), &quot;_example_&quot;, example_title, &quot;.log&quot;))
 start_time &lt;- format(Sys.time(), &quot;%Y/%m/%d %H:%M:%S&quot;)
 
@@ -190,6 +193,22 @@ plot(def_years, col=rainbow(length(years)),breaks=years, main=&quot;Detecting de
 ## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_3_deforestation_dates.grd 
 ## names       : layer.2 
 ## values      : -3729.035, -0.01502076  (min, max)</code></pre>
+</div>
+<div id="accuracy-asessment" class="section level2">
+<h2>Accuracy Asessment</h2>
+<pre class="r"><code>Forest_mask &lt;- raster(file.path(workshop_folder,&quot;data/Fmask_2010_Peru.tif&quot;))
+validation_forest_map &lt;- raster(file.path(workshop_folder,&quot;data/Validation_forest_2016.tif&quot;))</code></pre>
+<p>The accuracy assessment is done following the paper of Olofsson et al. (2014) “Good practices for estimating area and assessing accuracy of land change”.</p>
+<pre class="r"><code>sample_size &lt;- calcSampleSize(def_years,Forest_mask,c(0.9,0.7),0.01)
+samples &lt;- extractRandomSamples(def_years,Forest_mask,sample_size,results_directory,&quot;samples&quot;)
+val_sample &lt;- extractValidationValues(validation_forest_map, samples, Forest_mask)
+conf_matrix &lt;- assessAcuracy(samples,val_sample)
+conf_matrix</code></pre>
+<pre><code>##        0     1          
+## 0 715.00  62.0  777 0.92
+## 1 160.00 534.0  694 0.77
+##   875.00 596.0 1471   NA
+##     0.82   0.9   NA 0.85</code></pre>
 </div>
 
 
