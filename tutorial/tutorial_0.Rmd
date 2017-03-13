@@ -1,0 +1,74 @@
+---
+title: 'Tutorial 0: Preparing the environment'
+author: "Sabina Rosca"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Go to sepal.io and log in to your account.
+Click on Terminal and create a new session [placeholder CPU number].
+Open Rstudio from the Process menu.
+Create a new R script and copy the following code:
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+  workshop_folder <- "~/wur_bfast_workshop" 
+  dir.create(file.path(workshop_folder)) # Creates a directory for this workshop in your SEPAL account
+
+  download.file("https://www.dropbox.com/sh/299x5vdroyaqqs1/AAByVqMU3rH6LIxb2jIxPuDMa/R-scripts?dl=1",
+                file.path(workshop_folder,"R-scripts.zip"),"auto",mode="wb") 
+  unzip(file.path(workshop_folder,"R-scripts.zip"),exdir=file.path(workshop_folder,"R-scripts"))
+```
+
+These lines download a copy of the full scripts of this tutorial, as an alternative to copy-pasting the code snippets.
+You should find the scripts in `~/wur_bfast_workshop/R-scripts`
+
+### Installation and loading of required R packages
+
+Bfast and its required dependencies can be installed directly from github:
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+if (!require(devtools)){ # install only if not installed
+  install.packages("devtools", repos="http://cran.rstudio.com/")
+  library(devtools)
+}
+if (!require(stringr)){ # install only if not installed
+  install.packages("stringr", repos="http://cran.rstudio.com/")
+  library(stringr)
+}
+if (!require(bfastSpatial)){ # install only if not installed
+  install_github("loicdtx/bfastSpatial")
+  library(bfastSpatial)
+}
+```
+
+### Downloading the data
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+if(!file.exists(file.path(workshop_folder,"data.zip"))){
+  download.file("https://www.dropbox.com/sh/299x5vdroyaqqs1/AAC73-EIRslzrw2B5xEpw1eza/data?dl=1",
+                file.path(workshop_folder,"data.zip"),"auto",mode="wb")
+  unzip(file.path(workshop_folder,"data.zip"),exdir=file.path(workshop_folder,"data"))
+}
+```
+
+### Loading the input data for analysis
+
+```{r, message=FALSE, warning=FALSE}
+ndmiStack <- brick(file.path(workshop_folder,"data/Peru_ndmi_stack.grd"))
+ndmiStack
+ndviStack <- brick()
+
+```
+
+### Creating an output directory
+All the outputs will be in this folder
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+results_directory <- file.path(workshop_folder,"data/Bfast_results")
+if (!dir.exists(results_directory)){
+  dir.create(results_directory)
+}
+```
