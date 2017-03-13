@@ -1,5 +1,5 @@
 ---
-title: "Example 3"
+title: "Example 4"
 author: "Sabina Rosca"
 output: html_document
 ---
@@ -9,18 +9,26 @@ knitr::opts_chunk$set(echo = TRUE)
 source("~/wur_bfast_workshop/R-scripts/tutorial_0.R")
 ```
 
-## Example 3
+## Example 4
 
 ```{r, eval=FALSE}
 source("~/wur_bfast_workshop/R-scripts/tutorial_0.R")
-example_title <- 3
+example_title <- 4
 log_filename <- file.path(results_directory, paste0(format(Sys.time(), "%Y-%m-%d-%H-%M-%S"), "_example_", example_title, ".log"))
 start_time <- format(Sys.time(), "%Y/%m/%d %H:%M:%S")
 
 result <- file.path(results_directory, paste0("example_", example_title, ".grd"))
-time <- system.time(bfmSpatial(ndmiStack, start = c(2010, 1),
+subsetTimeStack <- function(timestack,year){
+  timespan <- which(timestack@z$time>as.Date(paste0(year,"-01-01"),"%Y-%m-%d"))
+  result <- brick(timestack[[timespan]])
+  result@z$time <- timestack@z$time[timespan]
+  result
+}
+
+ndmiStack_example_4 <- subsetTimeStack(ndmiStack,2005)
+time <- system.time(bfmSpatial(ndmiStack_example_4, start = c(2010, 1),
                                formula = response ~ harmon,
-                               order = 1, history = c(2005,1),
+                               order = 1, history = "all",
                                filename = result,
                                mc.cores = detectCores()))
 
@@ -32,7 +40,7 @@ write(paste0("This process started on ", start_time,
 ## Post Processing
 
 ```{r,include=FALSE}
-example_title <- 3
+example_title <- 4
 result <- file.path(results_directory, paste0("example_", example_title, ".grd"))
 ```
 
