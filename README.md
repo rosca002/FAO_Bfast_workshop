@@ -1,6 +1,8 @@
 # FAO Bfast workshop
 
 ## Slides
+FAO_BFAST_workshop_p1( FAO_Bfast_workshop/FAO_BFAST_workshop_p1.pdf)
+
 
 ## Tutorials
 [Tutorial 0: Preparing the environment](https://rosca002.github.io/FAO_Bfast_workshop/tutorial/tutorial_0.html)
