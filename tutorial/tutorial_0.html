@@ -122,7 +122,12 @@ $(document).ready(function () {
 </div>
 
 
-<p>Go to <a href="https://sepal.io">sepal.io</a> and log in to your account. Click on Terminal and create a new session [placeholder CPU number]. Open Rstudio from the Process menu. Create a new R script and copy the following code:</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to <a href="https://sepal.io">sepal.io</a> and log in to your account.</p></li>
+<li><p>Click on Terminal and create a new session type <code>14 c4.8xlarge, 36 CPU</code>.</p></li>
+<li><p>Open Rstudio from the Process menu.</p></li>
+</ol>
+<p>Create a new R script and copy the following code:</p>
 <pre class="r"><code>  workshop_folder &lt;- &quot;~/wur_bfast_workshop&quot; 
   dir.create(file.path(workshop_folder)) # Creates a directory for this workshop in your SEPAL account
 
@@ -172,7 +177,7 @@ ndmiStack</code></pre>
 </div>
 <div id="creating-an-output-directory" class="section level3">
 <h3>Creating an output directory</h3>
-<p>All the outputs will be in this folder</p>
+<p>All the results will be saved in this folder</p>
 <pre class="r"><code>results_directory &lt;- file.path(workshop_folder,&quot;data/Bfast_results&quot;)
 if (!dir.exists(results_directory)){
   dir.create(results_directory)

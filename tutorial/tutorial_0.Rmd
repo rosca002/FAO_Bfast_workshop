@@ -8,9 +8,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Go to [sepal.io](https://sepal.io) and log in to your account.
-Click on Terminal and create a new session [placeholder CPU number].
-Open Rstudio from the Process menu.
+1. Go to [sepal.io](https://sepal.io) and log in to your account.
+
+2. Click on Terminal and create a new session type `14 c4.8xlarge, 36 CPU`.
+
+3. Open Rstudio from the Process menu.
+
 Create a new R script and copy the following code:
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
@@ -64,7 +67,7 @@ ndviStack <- brick()
 ```
 
 ### Creating an output directory
-All the outputs will be in this folder
+All the results will be saved in this folder
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
 results_directory <- file.path(workshop_folder,"data/Bfast_results")
