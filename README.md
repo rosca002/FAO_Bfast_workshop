@@ -1,7 +1,7 @@
 # FAO Bfast workshop
 
 ## Slides
-[FAO_BFAST_workshop_p1]( FAO_Bfast_workshop/FAO_BFAST_workshop_p1.pdf)
+[FAO_BFAST_workshop_p1]( https://rosca002.github.io/FAO_Bfast_workshop/FAO_BFAST_workshop_p1.pdf)
 
 
 ## Tutorials
