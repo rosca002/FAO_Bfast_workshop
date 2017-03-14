@@ -109,7 +109,7 @@ def_years[is.na(def_ndmi)]=NA
 
 years <- c(2010,2011,2012,2013,2014,2015,2016,2017)
 plot(def_years, col=rainbow(length(years)),breaks=years, main="Detecting deforestation after 2010")
-writeRaster(def_ndmi,filename = file.path(results_directory,paste0("example_",example_title,"_deforestation_dates.grd")),overwrite=TRUE)
+writeRaster(def_years,filename = file.path(results_directory,paste0("example_",example_title,"_deforestation_dates.grd")),overwrite=TRUE)
 
 ```
 
