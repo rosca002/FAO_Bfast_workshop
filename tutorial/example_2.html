@@ -124,6 +124,14 @@ $(document).ready(function () {
 
 <div id="example-2" class="section level2">
 <h2>Example 2</h2>
+<p>Vegetation index: NDMI</p>
+<p>History period: 2000-2010</p>
+<p>option: “ROC”</p>
+<p>stack subset: no</p>
+<p>Monitoring approach: 2010-2016</p>
+<p>option: Full monitoring period approach</p>
+<p>Regression model: harmonic order 1</p>
+<p>Trend: no</p>
 <pre class="r"><code>source(&quot;~/wur_bfast_workshop/R-scripts/tutorial_0.R&quot;)
 source(&quot;~/wur_bfast_workshop/R-scripts/accuracy_assessment.R&quot;)
 example_title &lt;- 2
@@ -175,7 +183,7 @@ plot(def_ndmi)</code></pre>
 ## resolution  : 30, 30  (x, y)
 ## extent      : 374055, 384075, -676185, -666165  (xmin, xmax, ymin, ymax)
 ## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
-## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_2_deforestation_magnitude.grd 
+## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_2/example_2_deforestation_magnitude.grd 
 ## names       : layer.2 
 ## values      : -3706.921, -0.079172  (min, max)</code></pre>
 <pre class="r"><code>def_years &lt;- change
@@ -190,7 +198,7 @@ plot(def_years, col=rainbow(length(years)),breaks=years, main=&quot;Detecting de
 ## resolution  : 30, 30  (x, y)
 ## extent      : 374055, 384075, -676185, -666165  (xmin, xmax, ymin, ymax)
 ## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
-## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_2_deforestation_dates.grd 
+## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_2/example_2_deforestation_dates.grd 
 ## names       : layer.2 
 ## values      : -3706.921, -0.079172  (min, max)</code></pre>
 </div>
@@ -205,10 +213,10 @@ val_sample &lt;- extractValidationValues(validation_forest_map, samples, Forest_
 conf_matrix &lt;- assessAcuracy(samples,val_sample)
 conf_matrix</code></pre>
 <pre><code>##        0      1          
-## 0 728.00  42.00  770 0.95
-## 1 138.00 559.00  697 0.80
-##   866.00 601.00 1467   NA
-##     0.84   0.93   NA 0.88</code></pre>
+## 0 732.00  38.00  770 0.95
+## 1 131.00 566.00  697 0.81
+##   863.00 604.00 1467   NA
+##     0.85   0.94   NA 0.88</code></pre>
 </div>
 
 

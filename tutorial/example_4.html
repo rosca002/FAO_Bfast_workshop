@@ -124,6 +124,14 @@ $(document).ready(function () {
 
 <div id="example-4" class="section level2">
 <h2>Example 4</h2>
+<p>Vegetation index: NDMI</p>
+<p>History period: 2005-2010</p>
+<p>option: “all”</p>
+<p>stack subset: yes (from 2005)</p>
+<p>Monitoring approach: 2010-2016</p>
+<p>option: Full monitoring period approach</p>
+<p>Regression model: harmonic order 1</p>
+<p>Trend: no</p>
 <pre class="r"><code>source(&quot;~/wur_bfast_workshop/R-scripts/tutorial_0.R&quot;)
 source(&quot;~/wur_bfast_workshop/R-scripts/accuracy_assessment.R&quot;)
 example_title &lt;- 4
@@ -183,7 +191,7 @@ plot(def_ndmi)</code></pre>
 ## resolution  : 30, 30  (x, y)
 ## extent      : 374055, 384075, -676185, -666165  (xmin, xmax, ymin, ymax)
 ## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
-## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_4_deforestation_magnitude.grd 
+## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_4/example_4_deforestation_magnitude.grd 
 ## names       : layer.2 
 ## values      : -3729.035, -0.01502076  (min, max)</code></pre>
 <pre class="r"><code>def_years &lt;- change
@@ -198,7 +206,7 @@ plot(def_years, col=rainbow(length(years)),breaks=years, main=&quot;Detecting de
 ## resolution  : 30, 30  (x, y)
 ## extent      : 374055, 384075, -676185, -666165  (xmin, xmax, ymin, ymax)
 ## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
-## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_4_deforestation_dates.grd 
+## data source : /home/andrei/wur_bfast_workshop/data/Bfast_results/example_4/example_4_deforestation_dates.grd 
 ## names       : layer.2 
 ## values      : -3729.035, -0.01502076  (min, max)</code></pre>
 </div>
@@ -212,11 +220,11 @@ samples &lt;- extractRandomSamples(def_years,Forest_mask,sample_size,results_dir
 val_sample &lt;- extractValidationValues(validation_forest_map, samples, Forest_mask)
 conf_matrix &lt;- assessAcuracy(samples,val_sample)
 conf_matrix</code></pre>
-<pre><code>##        0     1          
-## 0 718.00  59.0  777 0.92
-## 1 143.00 551.0  694 0.79
-##   861.00 610.0 1471   NA
-##     0.83   0.9   NA 0.86</code></pre>
+<pre><code>##        0      1          
+## 0 720.00  57.00  777 0.93
+## 1 128.00 566.00  694 0.82
+##   848.00 623.00 1471   NA
+##     0.85   0.91   NA 0.87</code></pre>
 </div>
 
 

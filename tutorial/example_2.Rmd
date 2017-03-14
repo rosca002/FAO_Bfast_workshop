@@ -12,6 +12,22 @@ source("~/wur_bfast_workshop/R-scripts/accuracy_assessment.R")
 
 ## Example 2
 
+Vegetation index: NDMI
+
+History period: 2000-2010
+
+option: "ROC"
+
+stack subset: no
+
+Monitoring approach: 2010-2016
+
+option: Full monitoring period approach
+
+Regression model: harmonic order 1
+
+Trend: no
+
 ```{r, eval=FALSE}
 source("~/wur_bfast_workshop/R-scripts/tutorial_0.R")
 source("~/wur_bfast_workshop/R-scripts/accuracy_assessment.R")
@@ -37,6 +53,7 @@ write(paste0("This process started on ", start_time,
 
 ```{r,include=FALSE}
 example_title <- 2
+results_directory <- file.path(results_directory,paste0("example_",example_title))
 result <- file.path(results_directory, paste0("example_", example_title, ".grd"))
 ```
 

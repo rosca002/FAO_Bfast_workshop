@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Go to sepal.io and log in to your account.
+Go to [sepal.io](https://sepal.io) and log in to your account.
 Click on Terminal and create a new session [placeholder CPU number].
 Open Rstudio from the Process menu.
 Create a new R script and copy the following code:
