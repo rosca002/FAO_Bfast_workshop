@@ -62,8 +62,8 @@ if(!file.exists(file.path(workshop_folder,"data.zip"))){
 ```{r, message=FALSE, warning=FALSE}
 ndmiStack <- brick(file.path(workshop_folder,"data/Peru_ndmi_stack.grd"))
 ndmiStack
-ndviStack <- brick()
-
+ndviStack <- brick(file.path(workshop_folder,"data/Peru_ndmi_stack.grd"))
+ndviStack
 ```
 
 ### Creating an output directory
