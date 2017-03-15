@@ -162,8 +162,18 @@ if (!require(bfastSpatial)){ # install only if not installed
 <div id="loading-the-input-data-for-analysis" class="section level3">
 <h3>Loading the input data for analysis</h3>
 <pre class="r"><code>ndmiStack &lt;- brick(file.path(workshop_folder,&quot;data/Peru_ndmi_stack.grd&quot;))
-ndmiStack
-ndviStack &lt;- brick(file.path(workshop_folder,&quot;data/Peru_ndvi_stack.grd&quot;))
+ndmiStack</code></pre>
+<pre><code>## class       : RasterBrick 
+## dimensions  : 334, 334, 111556, 235  (nrow, ncol, ncell, nlayers)
+## resolution  : 30, 30  (x, y)
+## extent      : 374055, 384075, -676185, -666165  (xmin, xmax, ymin, ymax)
+## coord. ref. : +proj=utm +zone=18 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+## data source : /home/andrei/wur_bfast_workshop/data/Peru_ndmi_stack.grd 
+## names       : LT50080642000123, LT50080642000139, LT50080642000171, LT50080642000203, LT50080642000219, LT50080642000251, LT50080642000267, LT50080642000315, LT50080642000331, LT50080642001013, LT50080642001029, LT50080642001109, LT50080642001125, LT50080642001205, LT50080642001221, ... 
+## min values  :             -664,             2528,             1755,               NA,            -1499,             -686,               NA,            -1644,            -2533,            -1520,            -2046,             -908,             1817,             1902,            -2809, ... 
+## max values  :             5206,             4627,             5902,               NA,             6162,             6712,               NA,             6921,             5963,             6455,             6339,             6732,             5374,             4686,             5727, ... 
+## time        : 2000-05-02, 2016-09-27 (min, max)</code></pre>
+<pre class="r"><code>ndviStack &lt;- brick(file.path(workshop_folder,&quot;data/Peru_ndvi_stack.grd&quot;))
 ndviStack</code></pre>
 </div>
 <div id="creating-an-output-directory" class="section level3">

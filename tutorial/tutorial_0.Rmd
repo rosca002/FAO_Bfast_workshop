@@ -59,9 +59,11 @@ if(!file.exists(file.path(workshop_folder,"data.zip"))){
 
 ### Loading the input data for analysis
 
-```{r, message=FALSE, warning=FALSE, eval=FALSE}
+```{r, message=FALSE, warning=FALSE}
 ndmiStack <- brick(file.path(workshop_folder,"data/Peru_ndmi_stack.grd"))
 ndmiStack
+```
+```{r, message=FALSE, warning=FALSE, eval=FALSE}
 ndviStack <- brick(file.path(workshop_folder,"data/Peru_ndvi_stack.grd"))
 ndviStack
 ```
